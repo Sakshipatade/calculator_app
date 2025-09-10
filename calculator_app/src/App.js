@@ -4,11 +4,11 @@ function App() {
   const [input, setInput] = useState("");
 
   const insertValue = (value) => {
-    setInput((prev) => prev + value);
+    setInput((prev) => prev+value);
   };
 
   const calculateResult = () => {
-      setInput(eval(input).toString());
+      setInput((input).toString());
   };
 
   return (
