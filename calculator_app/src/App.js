@@ -8,7 +8,7 @@ function App() {
   };
 
   const calculateResult = () => {
-      setInput(eval(input));
+      setInput(eval(input).toString());
   };
 
   return (
