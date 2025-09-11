@@ -1,16 +1,26 @@
 import React, { useState } from "react";
+import './Calculator.css';
 
-function App() {
+
+function Calculator() {
   
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(" ");
 
   const insertValue = (value) => {
-    setInput((prev) => prev+value);
+    setInput((prev) => prev + value);
   };
 
-  const calculateResult = () => {
-      setInput((input).toString());
+    const calculateResult = () => {
+    try {
+      setInput(eval(input).toString());
+    } catch (error) {
+      setInput("Error");
+    }
   };
+
+  const clearResult = () => {
+    setInput(" ");
+  }
 
   return (
     <div className="App">
@@ -20,6 +30,7 @@ function App() {
       </div>
 
       <div>
+        <button onClick={() => clearResult("AC")}>AC</button>
         <button onClick={() => insertValue("%")}>%</button>
         <button onClick={() => insertValue("/")}>/</button>
         <button onClick={() => insertValue("7")}>7</button>
@@ -42,4 +53,4 @@ function App() {
   );
 }
 
-export default App;
+export default Calculator;

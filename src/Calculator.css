@@ -1,0 +1,15 @@
+body {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.App {
+    background-color: black;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 15px;
+    color: red;
+}
