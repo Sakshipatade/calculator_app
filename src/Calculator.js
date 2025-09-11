@@ -25,11 +25,11 @@ function Calculator() {
   return (
     <div className="App">
       <h2>My Calculator</h2>
-      <div>
+      <div className="inputContainer">
         <input type="text" value={input} disabled />
       </div>
 
-      <div>
+      <div className="buttonContainer">
         <button onClick={() => clearResult("AC")}>AC</button>
         <button onClick={() => insertValue("%")}>%</button>
         <button onClick={() => insertValue("/")}>/</button>
