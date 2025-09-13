@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import './Calculator.css';
 
-
 function Calculator() {
-  
-  const [input, setInput] = useState(" ");
+  const [input, setInput] = useState("");
+  const [history, setHistory] = useState([]); 
 
   const insertValue = (value) => {
     setInput((prev) => prev + value);
   };
 
-    const calculateResult = () => {
+  const calculateResult = () => {
     try {
-      setInput(eval(input).toString());
+      const result = eval(input).toString(); 
+      const newEntry = { expression: input, result };
+      setHistory((prev) => [...prev, newEntry]);
+
+      setInput(result); 
     } catch (error) {
       setInput("Error");
     }
@@ -20,8 +23,17 @@ function Calculator() {
 
   const clearResult = () => {
     setInput(" ");
-  }
+  };
 
+
+  useEffect(() => {
+    const savedHistory = JSON.parse(localStorage.getItem("calcHistory")) || [];
+    setHistory(savedHistory);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("calcHistory", JSON.stringify(history));
+  }, [history]);
 
   return (
     <div className="App">
@@ -31,7 +43,7 @@ function Calculator() {
       </div>
 
       <div className="buttonContainer">
-        <button onClick={() => clearResult("AC")}>AC</button>
+        <button onClick={clearResult}>AC</button>
         <button onClick={() => insertValue("%")}>%</button>
         <button onClick={() => insertValue("/")}>/</button>
         <button onClick={() => insertValue("7")}>7</button>
@@ -51,12 +63,17 @@ function Calculator() {
         <button onClick={calculateResult}>=</button>
       </div>
 
-      {/* <div>
-        <button onClick={saveHistory}>History</button>
-      </div> */}
+      <div className="historyContainer">
+        <h3>History</h3>
+        <ul>
+          {history.map((item, index) => (
+            <li key={index}>
+              {item.expression} = {item.result}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
-
-    
   );
 }
 
