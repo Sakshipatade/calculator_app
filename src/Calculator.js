@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Calculator.css';
 
 
@@ -21,6 +21,7 @@ function Calculator() {
   const clearResult = () => {
     setInput(" ");
   }
+
 
   return (
     <div className="App">
@@ -49,7 +50,13 @@ function Calculator() {
         <button onClick={() => insertValue(".")}>.</button>
         <button onClick={calculateResult}>=</button>
       </div>
+
+      {/* <div>
+        <button onClick={saveHistory}>History</button>
+      </div> */}
     </div>
+
+    
   );
 }
 
