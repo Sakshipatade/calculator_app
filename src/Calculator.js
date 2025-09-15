@@ -31,6 +31,9 @@ function Calculator() {
     setHistory(savedHistory);
   }, []);
 
+  console.log(typeof );
+  
+
   useEffect(() => {
     localStorage.setItem("calcHistory", JSON.stringify(history));
   }, [history]);
