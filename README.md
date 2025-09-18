@@ -11,7 +11,6 @@ A simple calculator build with react to perform basic arithmetic operation
     - CSS for styling
 
 ## How to run
-
 ```bash
 #Clone the repository
 git clone https://github.com/Sakshipatade/calculator_app.git
