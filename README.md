@@ -20,6 +20,7 @@ cd calculator_app
 
 #Install dependencies
 npm install
+
 #Start the app
 npm start
 ```
